@@ -1,0 +1,16 @@
+---
+sendmail::server:
+ - cos1.pt.ms
+ - abc.pt.ms
+ - mahes.pt.ms
+
+sendmail::manage_sendmail: true
+sendmail::manage_service: true
+sendmail::service_name: sendmail
+
+####
+sendmail::sendmail_mc_path: '/etc/mail/sendmail.mc'
+sendmail::sendmail_mc_templ: 'sendmail/sendmail.mc.epp'
+
+####
+sendmail::smarthost: 'lnxhw.pt.ms'

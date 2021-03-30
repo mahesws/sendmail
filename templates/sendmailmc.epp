@@ -1,0 +1,26 @@
+#
+# This file is managed by Puppet. DO NOT EDIT.
+#
+# Host: <%= $fqdn %>
+#
+#
+dnl # This is the sendmail macro config file for m4. If you make changes to
+dnl # /etc/mail/sendmail.mc, you will need to regenerate the
+dnl # /etc/mail/sendmail.cf file by confirming that the sendmail-cf package is
+dnl # installed and then performing a
+dnl #
+dnl #     /etc/mail/make
+dnl #
+include(`/usr/share/sendmail-cf/m4/cf.m4')dnl
+VERSIONID(`setup for linux')dnl
+OSTYPE(`linux')dnl
+define(`ALIAS_FILE',`/etc/mail/aliases')
+<% if $sendmail::smarthost { -%>
+dnl # SMART_HOST Configuration
+define(`SMART_HOST', [`<%= $sendmail::smarthost -%>'])dnl
+dnl #
+<% } -%>
+dnl #define(`RELAY_MAILER_ARGS', `TCP $h 587')dnl
+dnl #define(`ESMTP_MAILER_ARGS', `TCP $h 587')dnl
+MAILER(local)
+MAILER(smtp)
